@@ -41,25 +41,25 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score
-
+#1 етап
 X = df.drop('Survived', axis = 1)
 y = df['Survived']
 
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.25)
-
+#2 етап
 sc = StandardScaler()
 
 X_train = sc.fit_transform(X_train)
 
 X_test = sc.transform(X_test)
-
+#3 етап
 classifier = KNeighborsClassifier(n_neighbors= 3)
-
+#4 етап
 classifier.fit(X_train, y_train)
-
+#5 етап 
 y_pred = classifier.predict(X_test)
 
 #print(y_pred)
-
+#6 етап
 for p,t in zip(y_pred, y_test):
     print(f'p={p}; t={t}')
